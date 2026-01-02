@@ -109,7 +109,7 @@ except FileNotFoundError: #当文件未找到时
 #还是Ctrl+C、V好用
 merger = Merger([(list, ["append"]),(dict, ["merge"]),(set, ["union"]),],["override"],["override"])
 merged = merger.merge(process_json_file_low, process_json_file_high) #合并!
-json_outputs_data=json.dumps(merged,indent=2) #写回json形式
+json_outputs_data=json.dumps(merged,indent=2,ensure_ascii=False) #写回json形式 ##修复中文字符输出为unicode码点的问题
 
 os.chdir("outputs") #切换至输出路径
 print("请输入输出文件的名称：")
